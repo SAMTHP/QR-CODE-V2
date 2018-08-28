@@ -36,11 +36,10 @@ class AuthenticationFrontController extends AbstractController
         // Get User by email from request
         $user = $userRepository->findOneByEmail($decodeData->email);
 
-        // hasValid equal true if password valid or false if is not
-        $hashValid = $userPasswordEncoderInterface->isPasswordValid($user, $decodeData->password);
-
         // Test if login is valid
         if($user){
+             // hasValid equal true if password valid or false if is not
+            $hashValid = $userPasswordEncoderInterface->isPasswordValid($user, $decodeData->password);
             if($hashValid) {
                 return new JsonResponse("authentication success", Response::HTTP_OK, [], true);
             } else {
