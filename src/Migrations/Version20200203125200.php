@@ -22,7 +22,7 @@ final class Version20200203125200 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE discount_tag (discount_id INT NOT NULL, tag_id INT NOT NULL, INDEX IDX_E519AE844C7C611F (discount_id), INDEX IDX_E519AE84BAD26311 (tag_id), PRIMARY KEY(discount_id, tag_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        // $this->addSql('CREATE TABLE discount_tag (discount_id INT NOT NULL, tag_id INT NOT NULL, INDEX IDX_E519AE844C7C611F (discount_id), INDEX IDX_E519AE84BAD26311 (tag_id), PRIMARY KEY(discount_id, tag_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE discount_tag ADD CONSTRAINT FK_E519AE844C7C611F FOREIGN KEY (discount_id) REFERENCES discount (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE discount_tag ADD CONSTRAINT FK_E519AE84BAD26311 FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE');
         $this->addSql('DROP TABLE tag_discount');
