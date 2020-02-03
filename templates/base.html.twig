@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="icon" href="/img/favicon.png" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <!-- Flash message -->
+        {% for label, messages in app.flashes %}
+            <div class="alert alert-{{ label }}">
+                {% for message in messages %}
+                    <p>{{ message|raw }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <!-- /Flash message -->
+        {% block body %}{% endblock %}
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

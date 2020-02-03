@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QR CODE MANAGER{% endblock %}
+
+{% block body %}
+    <div class="bg-info shadow py-2">
+        <h1 class="text-center text-white">QR CODE MANAGER</h1>
+    </div>
+    <div class="container">
+        <div class="row shadow" style="margin-top: 20%">
+            <div class="col-xs-6 col-md-6 shadow bg-secondary">
+                <h1 class="text-white text-center">Administration</h1>
+                <hr>
+                <a href="{{path('easyadmin')}}">
+                    <div class="d-flex justify-content-center py-4">
+                        <img src="/img/admin.png" alt="" style="width: 50%">
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-6 shadow bg-warning">
+                <h1 class="text-white text-center">API</h1>
+                <hr>
+                <a href="{{path('api_entrypoint')}}">
+                    <div class="d-flex justify-content-center py-4">
+                        <img src="/img/api.png" alt="" style="width: 50%">
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-2">
+            <a href="{{path('account_logout')}}"><button class="btn btn-warning shadow">Se déconnecter</button></a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+easy_admin:
+   site_name: QR Code Manager
+   design:
+      assets:
+         favicon: '/img/favicon.png'
+      menu:
+         - label: 'Menu'
+           icon: 'bars'
+           children:
+               - {entity: 'Company', icon: 'building', label: 'Compagnies' }
+               - {entity: 'Discount', icon: 'percentage', label: 'Offres de promotion' }
+               - {entity: 'Role', icon: 'user-tag', label: 'Rôles' }
+               - {entity: 'Tag', icon: 'tags', label: 'Tags' }
+               - {entity: 'User', icon: 'user', label: 'Utilisateurs' }
+
+   entities:
+      # List the entity class name you want to manage
+      Company:
+         class: App\Entity\Company
+         form:
+            fields:
+               - {property: 'name'}
+               - {property: 'contact'}
+               - {property: 'discountOffers', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+      Discount:
+         class: App\Entity\Discount
+         form:
+            fields:
+               - {property: 'startDate'}
+               - {property: 'endDate'}
+               - {property: 'maxFlash'}
+               - {property: 'link'}
+               - {property: 'users', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\User'}}
+               - {property: 'tags', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Tag'}}
+               - {property: 'company', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Company'}}
+      Role:
+         class: App\Entity\ApiRole
+         form:
+            fields:
+               - {property: 'title'}
+               - {property: 'users', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\User'}}
+      Tag:
+         class: App\Entity\Tag
+         form:
+            fields:
+               - {property: 'title'}
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+      User:
+         class: App\Entity\User
+         form:
+            fields:
+               - {property: 'firstName'}
+               - {property: 'lastName'}
+               - {property: 'email'}
+               - {property: 'password'}
+               - {property: 'hasAgreed'}
+               - {property: 'phone'}
+               - {property: 'userRoles', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\ApiRole'}}
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
