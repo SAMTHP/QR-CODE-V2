@@ -21,7 +21,7 @@ easy_admin:
             fields:
                - {property: 'name'}
                - {property: 'contact'}
-               - {property: 'discountOffers', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
       Discount:
          class: App\Entity\Discount
          form:
