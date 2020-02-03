@@ -53,12 +53,12 @@ class User implements UserInterface
     private $hasAgreed;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Discount", mappedBy="users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Discount", mappedBy="users", cascade={"persist"})
      */
     private $discounts;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ApiRole", mappedBy="users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\ApiRole", mappedBy="users", cascade={"persist"})
      */
     private $apiRoles;
 

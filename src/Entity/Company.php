@@ -31,7 +31,7 @@ class Company
     private $contact;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Discount", mappedBy="company", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Discount", mappedBy="company", orphanRemoval=true, cascade={"persist"})
      */
     private $discounts;
 

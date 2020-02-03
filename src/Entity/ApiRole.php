@@ -26,7 +26,7 @@ class ApiRole
     private $title;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="apiRoles")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="apiRoles", cascade={"persist"})
      */
     private $users;
 

@@ -41,17 +41,17 @@ class Discount
     private $link;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="discounts")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="discounts", cascade={"persist"})
      */
     private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="discounts")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="discounts", cascade={"persist"})
      */
     private $tags;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="discounts")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="discounts", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $company;

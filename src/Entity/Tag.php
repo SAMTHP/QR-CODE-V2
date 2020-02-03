@@ -26,7 +26,7 @@ class Tag
     private $title;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Discount", mappedBy="tags")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Discount", mappedBy="tags", cascade={"persist"})
      */
     private $discounts;
 
