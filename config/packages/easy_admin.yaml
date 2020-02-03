@@ -55,5 +55,5 @@ easy_admin:
                - {property: 'password'}
                - {property: 'hasAgreed'}
                - {property: 'phone'}
-               - {property: 'userRoles', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\ApiRole'}}
+               - {property: 'apiRoles', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\ApiRole'}}
                - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
