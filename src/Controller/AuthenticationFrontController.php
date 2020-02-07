@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AuthenticationFrontController extends AbstractController
 {
     /**
-     * @Route("/login", name="authentication_login", methods={"POST"})
+     * @Route("/loginApp", name="authentication_login", methods={"POST"})
      */
     public function index(UserRepository $userRepository, Request $request)
     {
