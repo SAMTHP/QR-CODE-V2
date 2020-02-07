@@ -1,10 +1,5 @@
 <?php
 
-use Nelmio\CorsBundle\NelmioCorsBundle;
-use EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle;
-use Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
-use ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle;
-
 return [
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
@@ -21,4 +16,5 @@ return [
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
     ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
+    Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
 ];
