@@ -13,9 +13,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AuthenticationFrontController extends AbstractController
 {
     /**
-     * @Route("/loginApp", name="authentication_login", methods={"POST"})
+     * @Route("/authentication", name="authentication_login", methods={"POST"})
      */
-    public function loginApp(UserRepository $userRepository, Request $request,UserPasswordEncoderInterface $userPasswordEncoderInterface)
+    public function authentication(UserRepository $userRepository, Request $request,UserPasswordEncoderInterface $userPasswordEncoderInterface)
     {
         // Get data with request
         $data = $request->getContent();
@@ -28,7 +28,7 @@ class AuthenticationFrontController extends AbstractController
 
         // hasValid equal true if password valid or false if is not
         $hashValid = $userPasswordEncoderInterface->isPasswordValid($user, $decodeData->password);
-        
+
         // Test if login is valid
         if($user){
             if($hashValid) {
