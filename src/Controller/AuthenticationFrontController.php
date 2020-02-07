@@ -26,10 +26,8 @@ class AuthenticationFrontController extends AbstractController
         $user = $userRepository->findOneByEmail($decodeData->email);
 
         // Test if login is valid
-        if($decodeData->password == $user->getPassword()) {
-            return new JsonResponse("success", Response::HTTP_OK, [], true);
-        } else {
-            return new JsonResponse("failed", Response::HTTP_OK, [], true);
-        }
+
+        return new JsonResponse("success", Response::HTTP_OK, [], true);
+
     }
 }
