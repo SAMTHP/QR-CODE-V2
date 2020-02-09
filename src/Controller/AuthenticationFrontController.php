@@ -42,12 +42,12 @@ class AuthenticationFrontController extends AbstractController
         // Test if login is valid
         if($user){
             if($hashValid) {
-                return new JsonResponse("success", Response::HTTP_OK, [], true);
+                return new JsonResponse("authentication success", Response::HTTP_OK, [], true);
             } else {
-                return new JsonResponse("failed", Response::HTTP_OK, [], true);
+                return new JsonResponse("authentication failed", Response::HTTP_OK, [], true);
             }
         } else {
-            return new JsonResponse("failede", Response::HTTP_OK, [], true);
+            return new JsonResponse("authentication failed", Response::HTTP_OK, [], true);
         }
     }
 
@@ -70,10 +70,13 @@ class AuthenticationFrontController extends AbstractController
         // Decode content of request
         $decodeData = \json_decode($data);
 
+        // Instantiation of new user
         $user = new User();
         
+        // Hashing of password
         $hash = $userPasswordEncoderInterface->encodePassword($user, $decodeData->password);
 
+        // Set of user properties
         $user->setFirstName($decodeData->firstName)
              ->setLastName($decodeData->lastName)
              ->setEmail($decodeData->email)
@@ -81,9 +84,11 @@ class AuthenticationFrontController extends AbstractController
              ->setPhone($decodeData->phone)
              ->setHasAgreed($decodeData->hasAgreed);
 
+        // Persistence of user
         $manager->persist($user);
         $manager->flush();
 
+        // Return response
         return new JsonResponse("Account created", Response::HTTP_OK, [], true);
     }
 
