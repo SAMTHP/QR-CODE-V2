@@ -41,12 +41,12 @@ class AuthenticationFrontController extends AbstractController
              // hasValid equal true if password valid or false if is not
             $hashValid = $userPasswordEncoderInterface->isPasswordValid($user, $decodeData->password);
             if($hashValid) {
-                return new JsonResponse("authentication success", Response::HTTP_OK, [], true);
+                return new JsonResponse('{"authentication" : "success"}', Response::HTTP_OK, [], true);
             } else {
-                return new JsonResponse("authentication failed", Response::HTTP_OK, [], true);
+                return new JsonResponse('{"authentication" : "failed"}', Response::HTTP_OK, [], true);
             }
         } else {
-            return new JsonResponse("authentication failed", Response::HTTP_OK, [], true);
+            return new JsonResponse('{"authentication" : "failed"}', Response::HTTP_OK, [], true);
         }
     }
 
