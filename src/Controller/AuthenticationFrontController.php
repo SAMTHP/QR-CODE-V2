@@ -17,7 +17,7 @@ class AuthenticationFrontController extends AbstractController
     /**
      * Allow to login
      * 
-     * @Route("/api/authentication", name="authentication_login", methods={"POST"})
+     * @Route("/api/authentikation", name="authentication_login", methods={"POST"})
      * 
      * @param UserRepository $userRepository
      * @param Request $request
