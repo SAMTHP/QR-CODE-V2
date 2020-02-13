@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -17,7 +18,7 @@ class AuthenticationFrontController extends AbstractController
     /**
      * Allow to login
      * 
-     * @Route("/api/authentikation", name="authentication_login", methods={"POST"})
+     * @Route("/authentication", name="authentication_login", methods={"POST"})
      * 
      * @param UserRepository $userRepository
      * @param Request $request
@@ -25,7 +26,7 @@ class AuthenticationFrontController extends AbstractController
      * @return JsonResponse
      * @author Samir Founou
      */
-    public function authentication(UserRepository $userRepository, Request $request,UserPasswordEncoderInterface $userPasswordEncoderInterface)
+    public function authentication(UserRepository $userRepository, Request $request,UserPasswordEncoderInterface $userPasswordEncoderInterface, SerializerInterface $serializerInterface)
     {
         // Get data with request
         $data = $request->getContent();
@@ -36,12 +37,25 @@ class AuthenticationFrontController extends AbstractController
         // Get User by email from request
         $user = $userRepository->findOneByEmail($decodeData->email);
 
+        $result = $serializerInterface->serialize(
+            $user,
+            'json'
+        );
+
         // Test if login is valid
         if($user){
              // hasValid equal true if password valid or false if is not
             $hashValid = $userPasswordEncoderInterface->isPasswordValid($user, $decodeData->password);
             if($hashValid) {
-                return new JsonResponse('{"authentication" : "success"}', Response::HTTP_OK, [], true);
+                return new JsonResponse(
+                    "{
+                        'authentication' : 'success',
+                        'UserInfos': $result
+                    }",
+                    Response::HTTP_OK,
+                    [],
+                    true
+                );
             } else {
                 return new JsonResponse('{"authentication" : "failed"}', Response::HTTP_OK, [], true);
             }
