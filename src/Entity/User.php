@@ -7,11 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ApiResource
+ * @ApiResource(
+ *  normalizationContext={"groups"={"users_read"}}
+ * )
  */
 class User implements UserInterface
 {
@@ -24,16 +27,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups(
+     *  {"users_read"}
+     * )
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups(
+     *  {"users_read"}
+     * )
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups(
+     *  {"users_read"}
+     * )
      */
     private $email;
 
@@ -44,21 +56,33 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups(
+     *  {"users_read"}
+     * )
      */
     private $phone;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups(
+     *  {"users_read"}
+     * )
      */
     private $hasAgreed;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Discount", mappedBy="users", cascade={"persist"})
+     * @Groups(
+     *  {"users_read"}
+     * )
      */
     private $discounts;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\ApiRole", mappedBy="users", cascade={"persist"})
+     * @Groups(
+     *  {"users_read"}
+     * )
      */
     private $apiRoles;
 
