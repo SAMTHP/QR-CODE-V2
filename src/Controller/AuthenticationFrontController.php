@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Services\UserDto;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,21 +38,19 @@ class AuthenticationFrontController extends AbstractController
         // Get User by email from request
         $user = $userRepository->findOneByEmail($decodeData->email);
 
-        $result = $serializerInterface->serialize(
-            $user,
-            'json'
-        );
-
         // Test if login is valid
         if($user){
              // hasValid equal true if password valid or false if is not
             $hashValid = $userPasswordEncoderInterface->isPasswordValid($user, $decodeData->password);
             if($hashValid) {
+
+                $result = $serializerInterface->serialize(
+                    $user->setPassword(false),
+                    'json'
+                );
+
                 return new JsonResponse(
-                    "{
-                        'authentication' : 'success',
-                        'UserInfos': $result
-                    }",
+                    $result,
                     Response::HTTP_OK,
                     [],
                     true
