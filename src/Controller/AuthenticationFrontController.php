@@ -74,7 +74,7 @@ class AuthenticationFrontController extends AbstractController
      * @return JsonResponse
      * @author Samir Founou
      */
-    public function register(EntityManagerInterface $manager, Request $request,UserPasswordEncoderInterface $userPasswordEncoderInterface)
+    public function register(EntityManagerInterface $manager, Request $request,UserPasswordEncoderInterface $userPasswordEncoderInterface, SerializerInterface $serializerInterface)
     {
         // Get data with request
         $data = $request->getContent();
@@ -100,8 +100,20 @@ class AuthenticationFrontController extends AbstractController
         $manager->persist($user);
         $manager->flush();
 
+        $result = $serializerInterface->serialize(
+            $user->setPassword(false),
+            'json'
+        );
+
+        $user->setPassword(false);
+
         // Return response
-        return new JsonResponse("Account created", Response::HTTP_OK, [], true);
+        return new JsonResponse(
+            $result,
+            Response::HTTP_OK,
+            [],
+            true
+        );
     }
 
 
