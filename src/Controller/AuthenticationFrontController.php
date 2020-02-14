@@ -49,7 +49,11 @@ class AuthenticationFrontController extends AbstractController
                 );
 
                 return new JsonResponse(
-                    $result,
+                    "{
+                        'user': {
+                            $result
+                        }
+                    }",
                     Response::HTTP_OK,
                     [],
                     true
