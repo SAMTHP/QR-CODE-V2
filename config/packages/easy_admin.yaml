@@ -19,41 +19,79 @@ easy_admin:
          class: App\Entity\Company
          form:
             fields:
-               - {property: 'name'}
-               - {property: 'contact'}
-               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+               - {property: 'name', label: 'Nom'}
+               - {property: 'contact', label: 'Contact'}
+               - {property: 'discounts', label: 'Offres liées' , type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+         edit:
+            fields:
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+         new:
+            fields:
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+
       Discount:
          class: App\Entity\Discount
          form:
             fields:
-               - {property: 'startDate'}
-               - {property: 'endDate'}
-               - {property: 'maxFlash'}
-               - {property: 'link'}
-               - {property: 'users', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\User'}}
-               - {property: 'tags', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Tag'}}
-               - {property: 'company', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Company'}}
+               - {property: 'startDate', label: 'Date de début'}
+               - {property: 'endDate', label: 'Date de fin'}
+               - {property: 'maxFlash', label: 'Limit flash'}
+               - {property: 'link', label: 'Libelle'}
+               - {property: 'users', label: 'Utilisateurs' , type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\User'}}
+               - {property: 'tags' , label: 'Tags', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Tag'}}
+               - {property: 'company', label: 'Companie lié', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Company'}}
+         edit:
+            fields:
+               - {property: 'users', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+               - {property: 'tags', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+         new:
+            fields:
+               - {property: 'users', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+               - {property: 'tags', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+
       Role:
          class: App\Entity\ApiRole
          form:
             fields:
-               - {property: 'title'}
-               - {property: 'users', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\User'}}
+               - {property: 'title', label: 'Titre'}
+               - {property: 'users', label: 'Utilisateurs liées', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\User'}}
+         edit:
+            fields:
+               - {property: 'users', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+         new:
+            fields:
+               - {property: 'users', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+
       Tag:
          class: App\Entity\Tag
          form:
             fields:
-               - {property: 'title'}
-               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+               - {property: 'title', label: 'Titre'}
+               - {property: 'discounts', label: 'Offres de promotion liées', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+         edit:
+            fields:
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+         new:
+            fields:
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+               
       User:
          class: App\Entity\User
          form:
             fields:
-               - {property: 'firstName'}
-               - {property: 'lastName'}
-               - {property: 'email'}
-               - {property: 'password'}
-               - {property: 'hasAgreed'}
-               - {property: 'phone'}
-               - {property: 'apiRoles', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\ApiRole'}}
-               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+               - {property: 'firstName', label: 'Prénom'}
+               - {property: 'lastName', label: 'Nom'}
+               - {property: 'email', label: 'Email'}
+               - {property: 'password', label: 'Mot de passe'}
+               - {property: 'hasAgreed', label: 'Accord'}
+               - {property: 'phone', label: 'Téléphone'}
+               - {property: 'apiRoles', label: 'Roles', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\ApiRole'}}
+               - {property: 'discounts', label: 'Offres de promotion', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\Discount'}}
+         edit:
+            fields:
+               - {property: 'apiRoles', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+         new:
+            fields:
+               - {property: 'apiRoles', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+               - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}

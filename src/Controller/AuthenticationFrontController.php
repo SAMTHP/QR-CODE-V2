@@ -64,58 +64,58 @@ class AuthenticationFrontController extends AbstractController
         }
     }
 
-    /**
-     * Allow to create an user account
-     * 
-     * @Route("/api/users", name="authentication_register", methods={"POST"})
-     * 
-     * @param EntityManagerInterface $manager
-     * @param Request $request
-     * @param  UserPasswordEncoderInterface $UserPasswordEncoderInterface
-     * @return JsonResponse
-     * @author Samir Founou
-     */
-    public function register(EntityManagerInterface $manager, Request $request,UserPasswordEncoderInterface $userPasswordEncoderInterface, SerializerInterface $serializerInterface)
-    {
-        // Get data with request
-        $data = $request->getContent();
+    // /**
+    //  * Allow to create an user account
+    //  * 
+    //  * @Route("/api/users", name="authentication_register", methods={"POST"})
+    //  * 
+    //  * @param EntityManagerInterface $manager
+    //  * @param Request $request
+    //  * @param  UserPasswordEncoderInterface $UserPasswordEncoderInterface
+    //  * @return JsonResponse
+    //  * @author Samir Founou
+    //  */
+    // public function register(EntityManagerInterface $manager, Request $request,UserPasswordEncoderInterface $userPasswordEncoderInterface, SerializerInterface $serializerInterface)
+    // {
+    //     // Get data with request
+    //     $data = $request->getContent();
 
-        // Decode content of request
-        $decodeData = \json_decode($data);
+    //     // Decode content of request
+    //     $decodeData = \json_decode($data);
 
-        // Instantiation of new user
-        $user = new User();
+    //     // Instantiation of new user
+    //     $user = new User();
         
-        // Hashing of password
-        $hash = $userPasswordEncoderInterface->encodePassword($user, $decodeData->password);
+    //     // Hashing of password
+    //     $hash = $userPasswordEncoderInterface->encodePassword($user, $decodeData->password);
 
-        // Set of user properties
-        $user->setFirstName($decodeData->firstName)
-             ->setLastName($decodeData->lastName)
-             ->setEmail($decodeData->email)
-             ->setPassword($hash)
-             ->setPhone($decodeData->phone)
-             ->setHasAgreed($decodeData->hasAgreed);
+    //     // Set of user properties
+    //     $user->setFirstName($decodeData->firstName)
+    //          ->setLastName($decodeData->lastName)
+    //          ->setEmail($decodeData->email)
+    //          ->setPassword($hash)
+    //          ->setPhone($decodeData->phone)
+    //          ->setHasAgreed($decodeData->hasAgreed);
 
-        // Persistence of user
-        $manager->persist($user);
-        $manager->flush();
+    //     // Persistence of user
+    //     $manager->persist($user);
+    //     $manager->flush();
 
-        $result = $serializerInterface->serialize(
-            $user->setPassword(false),
-            'json'
-        );
+    //     $result = $serializerInterface->serialize(
+    //         $user,
+    //         'json'
+    //     );
 
-        $user->setPassword(false);
+    //     // $user->setPassword(false);
 
-        // Return response
-        return new JsonResponse(
-            $result,
-            Response::HTTP_OK,
-            [],
-            true
-        );
-    }
+    //     // Return response
+    //     return new JsonResponse(
+    //         $result,
+    //         Response::HTTP_OK,
+    //         [],
+    //         true
+    //     );
+    // }
 
 
 }
