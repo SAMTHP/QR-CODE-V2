@@ -35,7 +35,7 @@ class AuthenticationFrontController extends AbstractController
         $decodeData = \json_decode($data);
         
         // Get User by email from request
-        $user = $userRepository->findOneByEmail($decodeData->email);
+        $user = $userRepository->findOneByEmail($decodeData->username);
 
         // Test if login is valid
         if($user){
