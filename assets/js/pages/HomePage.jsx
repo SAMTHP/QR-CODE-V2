@@ -10,7 +10,7 @@ const HomePage = (props) => {
             <div className="col-xs-6 col-md-6 shadow bg-secondary">
                 <h1 className="text-white text-center">Administration</h1>
                 <hr/>
-                <a href="{{path('easyadmin')}}">
+                <a href="/admin">
                     <div className="d-flex justify-content-center py-4">
                         <img src="/img/admin.png" alt="" style={imgStyle}/>
                     </div>
@@ -19,7 +19,7 @@ const HomePage = (props) => {
             <div className="col-xs-6 col-md-6 shadow bg-warning">
                 <h1 className="text-white text-center">API</h1>
                 <hr/>
-                <a href="{{path('api_entrypoint')}}">
+                <a href="/api">
                     <div className="d-flex justify-content-center py-4">
                         <img src="/img/api.png" alt="" style={imgStyle}/>
                     </div>

@@ -3,7 +3,7 @@ import React from 'react';
 const TeamJumbotron = (props) => {
     return ( 
         <div className="jumbotron shadow">
-            <h1 className="display-4">Gestion des PDF</h1>
+            <h1 className="display-4">Gestion des QR codes</h1>
             <p className="lead">Application développée dans le cadre d'un projet en équipe</p>
             <hr className="my-4"/>
             <div className="list-group shadow">
