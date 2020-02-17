@@ -82,7 +82,7 @@ easy_admin:
                - {property: 'firstName', label: 'Prénom'}
                - {property: 'lastName', label: 'Nom'}
                - {property: 'email', label: 'Email'}
-               - {property: 'password', label: 'Mot de passe'}
+               # - {property: 'password', label: 'Mot de passe'}
                - {property: 'hasAgreed', label: 'Accord'}
                - {property: 'phone', label: 'Téléphone'}
                - {property: 'apiRoles', label: 'Roles', type: 'easyadmin_autocomplete', type_options: {class: 'App\Entity\ApiRole'}}
@@ -95,3 +95,4 @@ easy_admin:
             fields:
                - {property: 'apiRoles', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
                - {property: 'discounts', type: 'easyadmin_autocomplete', type_options: {by_reference: false}}
+               - {property: 'password', label: 'Mot de passe'}
