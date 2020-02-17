@@ -71,7 +71,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/api/companies, roles: IS_AUTHENTICATED_FULLY, methods: [POST,GET,PUT,DELETE]}
+        - { path: ^/api/companies, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/api/discounts,roles: IS_AUTHENTICATED_FULLY, methods: [POST,GET,PUT,DELETE]}
         - { path: ^/api/tags,roles: IS_AUTHENTICATED_FULLY, methods: [POST,GET,PUT,DELETE]}
         - { path: ^/api/api_roles,roles: IS_AUTHENTICATED_FULLY, methods: [POST,GET,PUT,DELETE]}
