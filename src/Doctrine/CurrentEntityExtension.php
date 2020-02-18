@@ -34,7 +34,7 @@ class CurrentEntityExtension implements QueryCollectionExtensionInterface, Query
             if($resourceClass === Discount::class){
                 
             }
-            dd($routeAlias);
+
         }
 
     }
