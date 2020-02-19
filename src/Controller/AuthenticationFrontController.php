@@ -118,4 +118,33 @@ class AuthenticationFrontController extends AbstractController
     // }
 
 
+    /**
+     * Allow to get an user by his email
+     *
+     * @Route("/api/users/find_by_email", name="authentication_find_by_email", methods={"GET"})
+     * 
+     * @param Request $request
+     * @return void
+     */
+    public function getUserByEmail(SerializerInterface $serializerInterface,UserRepository $userRepository, Request $request)
+    {
+        $data = $request->getContent();
+        $decodeData = \json_decode($data);
+
+        $user = $userRepository->findOneByEmail($decodeData->username);
+
+        $result = $serializerInterface->serialize(
+            $user,
+            'json'
+        );
+
+        return new JsonResponse(
+            $result,
+            Response::HTTP_OK,
+            [],
+            true
+        );
+    }
+
+
 }
