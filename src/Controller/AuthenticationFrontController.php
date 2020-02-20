@@ -121,7 +121,7 @@ class AuthenticationFrontController extends AbstractController
     /**
      * Allow to get an user by his email
      *
-     * @Route("/api/users/find_by_email", name="authentication_find_by_email", methods={"GET"})
+     * @Route("/api/users/find_by_email", name="authentication_find_by_email", methods={"POST"})
      * 
      * @param Request $request
      * @return void
