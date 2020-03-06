@@ -15,8 +15,6 @@ class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
 
         // Assertions for verify id response have good status code
         $this->assertSame(200, $client->getResponse()->getStatusCode());
-
-        //echo $client->getResponse()->getContent();
     }
 
     public function testIfLoginPageHaveGoodElements()
