@@ -6,10 +6,18 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CompanyRepository")
  * @ApiResource()
+ * @UniqueEntity(
+ *     fields={"name", "contact"},
+ *     errorPath="name",
+ *     errorPath="contact",
+ *     message="Une compagnie possède déjà ces informations"
+ * )
  */
 class Company
 {
@@ -22,11 +30,20 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner le nom de la compagnie"
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner l'adresse contact de la compagnie"
+     * )
+     * @Assert\Email(
+     *  message = "Vous devez renseigner renseigner un email valide"
+     * )
      */
     private $contact;
 

@@ -6,10 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DiscountRepository")
  * @ApiResource()
+ * @UniqueEntity(
+ *  fields={"link"},
+ *  message = "Une autre offre de promotion possède déjà ce lien"
+ * )
  */
 class Discount
 {
@@ -22,21 +28,31 @@ class Discount
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Date(
+     *  message = "Vous devez renseigner une date valide"
+     * )
      */
     private $startDate;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Date(
+     *  message = "Vous devez renseigner une date valide"
+     * )
      */
     private $endDate;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Positive
      */
     private $maxFlash;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner le lien de l'offre de promotion"
+     * )
      */
     private $link;
 

@@ -6,10 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ApiRoleRepository")
  * @ApiResource()
+ * @UniqueEntity(
+ *  fields={"tite"},
+ *  message = "Un rôle pôssède déjà ce titre, merci de le modifier"
+ * )
  */
 class ApiRole
 {
@@ -22,6 +28,9 @@ class ApiRole
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner votre titre"
+     * )
      */
     private $title;
 

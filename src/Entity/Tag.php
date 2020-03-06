@@ -6,10 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
  * @ApiResource
+ * @UniqueEntity(
+ *  fields={"title"},
+ *  message = "Un autre tag possède déjà ce titre"
+ * )
  */
 class Tag
 {
@@ -22,6 +28,9 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner votre titre"
+     * )
      */
     private $title;
 

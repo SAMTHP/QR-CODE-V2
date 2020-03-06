@@ -9,11 +9,17 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ApiResource(
  *  normalizationContext={"groups"={"users_read"}}
+ * )
+ * @UniqueEntity(
+ *  fields={"email"},
+ *  message = "Un autre utilisateur possède déjà cette adresse email, merci de la modifier"
  * )
  */
 class User implements UserInterface
@@ -30,6 +36,9 @@ class User implements UserInterface
      * @Groups(
      *  {"users_read"}
      * )
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner votre prénom"
+     * )
      */
     private $firstName;
 
@@ -37,6 +46,9 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups(
      *  {"users_read"}
+     * )
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner votre nom"
      * )
      */
     private $lastName;
@@ -46,11 +58,20 @@ class User implements UserInterface
      * @Groups(
      *  {"users_read"}
      * )
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner votre email"
+     * )
+     * @Assert\Email(
+     *  message = "Vous devez renseigner renseigner un email valide"
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner votre mot de passe"
+     * )
      */
     private $password;
 
@@ -59,6 +80,9 @@ class User implements UserInterface
      * @Groups(
      *  {"users_read"}
      * )
+     * @Assert\NotBlank(
+     *  message = "Vous devez renseigner votre numéro de téléphone"
+     * )
      */
     private $phone;
 
@@ -66,6 +90,9 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      * @Groups(
      *  {"users_read"}
+     * )
+     * @Assert\NotBlank(
+     *  message = "Vous devez définir l'accord"
      * )
      */
     private $hasAgreed;
