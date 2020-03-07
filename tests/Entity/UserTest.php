@@ -10,7 +10,7 @@ class UserTest extends TestCase
      */
     public function test()
     {
-        $this->assertSame(4,4);
+        $this->assertSame(4,43);
     }
 
 }
