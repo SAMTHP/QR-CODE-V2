@@ -5,6 +5,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
 {
+    /**
+     * @test
+     */
     public function testLoginPageIsUp()
     {
         // HTTP CLIENT CREATION
@@ -17,6 +20,9 @@ class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
         $this->assertSame(200, $client->getResponse()->getStatusCode());
     }
 
+    /**
+     * @test
+     */
     public function testIfLoginPageHaveGoodElements()
     {
         // HTTP CLIENT CREATION
@@ -29,6 +35,9 @@ class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Identification")')->count());
     }
 
+    /**
+     * @test
+     */
     public function testLoginForm()
     {
         // HTTP CLIENT CREATION
