@@ -72,6 +72,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+      * @Groups(
+     *  {"users_read"}
+     * )
      * @Assert\NotBlank(
      *  message = "Vous devez renseigner votre mot de passe"
      * )
