@@ -97,9 +97,6 @@ class User implements UserInterface
      * @Groups(
      *  {"users_read"}
      * )
-     * @Assert\NotBlank(
-     *  message = "Vous devez définir l'accord"
-     * )
      */
     private $hasAgreed;
 
