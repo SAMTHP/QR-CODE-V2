@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 namespace tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -55,4 +55,4 @@ class AccountControllerTest extends WebTestCase
     //     $this->assertSame(1, $crawler->filter('html:contains("Administration")')->count());
     //     $this->assertSame(1, $crawler->filter('html:contains("API")')->count());
     // }
-}
+} -->
