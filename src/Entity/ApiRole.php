@@ -20,6 +20,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class ApiRole
 {
     /**
+     * ApiRole class constructor
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -38,11 +46,6 @@ class ApiRole
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="apiRoles", cascade={"persist"})
      */
     private $users;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

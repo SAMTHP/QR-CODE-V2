@@ -1,5 +1,5 @@
 <?php
-namespace App\Tests\Entity;
+namespace tests\AppBundle\Entity;
 
 use App\Entity\ApiRole;
 use App\Entity\User;

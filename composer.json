@@ -9,6 +9,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "easycorp/easyadmin-bundle": "^2.3",
         "lexik/jwt-authentication-bundle": "^2.6",
+        "phpdocumentor/flyfinder": "^1.0@beta",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.0.*",

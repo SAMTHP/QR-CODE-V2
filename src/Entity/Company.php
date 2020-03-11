@@ -22,6 +22,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Company
 {
     /**
+     * Company class constructor
+     */
+    public function __construct()
+    {
+        $this->discounts = new ArrayCollection();
+    }
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -51,11 +59,6 @@ class Company
      * @ORM\OneToMany(targetEntity="App\Entity\Discount", mappedBy="company", orphanRemoval=true, cascade={"persist"})
      */
     private $discounts;
-
-    public function __construct()
-    {
-        $this->discounts = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

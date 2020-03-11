@@ -20,6 +20,15 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Discount
 {
     /**
+     * Discount class constructor
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+        $this->tags = new ArrayCollection();
+    }
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -71,12 +80,6 @@ class Discount
      * @ORM\JoinColumn(nullable=false)
      */
     private $company;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-        $this->tags = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

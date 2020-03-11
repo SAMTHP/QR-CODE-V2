@@ -1,13 +1,11 @@
 <?php
-namespace App\tests\Controller;
+namespace tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
+class AccountControllerTest extends WebTestCase
 {
-    /**
-     * @test
-     */
+
     public function testLoginPageIsUp()
     {
         // HTTP CLIENT CREATION
@@ -20,9 +18,6 @@ class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
         $this->assertSame(200, $client->getResponse()->getStatusCode());
     }
 
-    /**
-     * @test
-     */
     public function testIfLoginPageHaveGoodElements()
     {
         // HTTP CLIENT CREATION
@@ -35,9 +30,6 @@ class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Identification")')->count());
     }
 
-    /**
-     * @test
-     */
     public function testLoginForm()
     {
         // HTTP CLIENT CREATION
@@ -50,12 +42,12 @@ class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
         $form = $crawler->selectButton("Se connecter")->form();
 
         // Filling form
-        $form["_username"] = "admin@admin.fr";
-        $form["_password"] = "admin";
+        $form["_username"] = "adminmaster@admin.fr";
+        $form["_password"] = "pass";
         
         // Form submit
         $client->submit($form);
-
+        
         // Insert response into crawler
         $crawler = $client->followRedirect();
 
@@ -63,4 +55,4 @@ class AuthenticationFrontControllerFunctionnalTests extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Administration")')->count());
         $this->assertSame(1, $crawler->filter('html:contains("API")')->count());
     }
-}                                                                                                 
+}

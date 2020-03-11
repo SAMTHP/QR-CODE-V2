@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\ApiRole;
 use App\Entity\Tag;
-use App\Entity\Role;
 use App\Entity\User;
 use App\Entity\Company;
 use App\Entity\Discount;
@@ -16,10 +15,24 @@ class AppFixtures extends Fixture
 {
     private $encoder;
 
+    /**
+     * AppFixtures class constructor
+     *
+     * @param UserPasswordEncoderInterface $encoder
+     * @author Samir Founou
+     */
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
     }
+
+    /**
+     * Allow to generate fixtures
+     *
+     * @param ObjectManager $manager
+     * @author Samir Founou
+     * @return void
+     */
     public function load(ObjectManager $manager)
     {
         // Role Admin creation

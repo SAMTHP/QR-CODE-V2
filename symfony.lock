@@ -144,6 +144,9 @@
     "lcobucci/jwt": {
         "version": "3.3.1"
     },
+    "league/flysystem": {
+        "version": "1.0.65"
+    },
     "lexik/jwt-authentication-bundle": {
         "version": "2.5",
         "recipe": {
@@ -188,6 +191,9 @@
     },
     "php": {
         "version": "7.2"
+    },
+    "phpdocumentor/flyfinder": {
+        "version": "1.0.0-beta4"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"

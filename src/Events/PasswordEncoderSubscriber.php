@@ -17,12 +17,15 @@ class PasswordEncoderSubscriber implements EventSubscriberInterface
      * @var UserPasswordEncoderInterface
      */
     private $encoder;
-    private $userRepository;
 
-    public function __construct(UserRepository $userRepository, UserPasswordEncoderInterface $encoder)
+    /**
+     * PasswordEncoderSubscriber class constructor
+     *
+     * @param UserPasswordEncoderInterface $encoder
+     */
+    public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
-        $this->userRepository = $userRepository;
     }
 
     /**
@@ -40,6 +43,8 @@ class PasswordEncoderSubscriber implements EventSubscriberInterface
      *  * ['eventName' => 'methodName']
      *  * ['eventName' => ['methodName', $priority]]
      *  * ['eventName' => [['methodName1', $priority], ['methodName2']]]
+     * 
+     * @author Samir Founou
      *
      * @return array The event names to listen to
      */
@@ -50,6 +55,14 @@ class PasswordEncoderSubscriber implements EventSubscriberInterface
         ];
     }
 
+    /**
+     * Allow to encode password
+     *
+     * @param ViewEvent $event
+     * 
+     * @author Samir Founou
+     * @return void
+     */
     public function encodePassword(ViewEvent $event)
     {
         $user = $event->getControllerResult();

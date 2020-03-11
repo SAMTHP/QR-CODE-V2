@@ -5,6 +5,14 @@ use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
 
 class JwtCreatedSubscriber
 {
+    /**
+     * Allow to update the Json Web Token
+     *
+     * @param JWTCreatedEvent $event
+     * @author Samir Founou
+     * 
+     * @return void
+     */
     public function updateJwtData(JWTCreatedEvent $event)
     {
         // Get user

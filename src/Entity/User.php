@@ -25,6 +25,15 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class User implements UserInterface
 {
     /**
+     * User class constructor
+     */
+    public function __construct()
+    {
+        $this->discounts = new ArrayCollection();
+        $this->apiRoles = new ArrayCollection();
+    }
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -115,12 +124,6 @@ class User implements UserInterface
      * )
      */
     private $apiRoles;
-
-    public function __construct()
-    {
-        $this->discounts = new ArrayCollection();
-        $this->apiRoles = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

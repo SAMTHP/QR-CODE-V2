@@ -20,6 +20,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Tag
 {
     /**
+     * Tag class constructor
+     */
+    public function __construct()
+    {
+        $this->discounts = new ArrayCollection();
+    }
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -38,11 +46,6 @@ class Tag
      * @ORM\ManyToMany(targetEntity="App\Entity\Discount", mappedBy="tags", cascade={"persist"})
      */
     private $discounts;
-
-    public function __construct()
-    {
-        $this->discounts = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
